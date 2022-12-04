@@ -1,6 +1,6 @@
 {
   "name": "@aminnairi/react-store",
-  "description": "Simply yet powerful store manager written in TypeScript on top of React's context & reducer",
+  "description": "Simple yet powerful store manager written in TypeScript on top of React's context & reducer",
   "version": "0.1.0",
   "homepage": "https://github.com/aminnairi/react-store#readme",
   "license": "GPL-3.0-or-later",

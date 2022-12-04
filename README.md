@@ -1,6 +1,6 @@
 # @aminnairi/react-store
 
-Simply yet powerful store manager written in TypeScript on top of React's context & reducer
+Simple yet powerful store manager written in TypeScript on top of React's context & reducer
 
 ## Requirements
 
