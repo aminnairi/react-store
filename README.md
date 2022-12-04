@@ -1,5 +1,8 @@
 # @aminnairi/react-store
 
+[![NPM](https://badgen.net/npm/v/@aminnairi/react-store)](https://www.npmjs.com/package/@aminnairi/react-store)
+![Size](https://badgen.net/bundlephobia/minzip/@aminnairi/react-store) ![Vulnerabilities](https://badgen.net/snyk/aminnairi/react-store)
+
 Simple yet powerful store manager written in TypeScript on top of React's context & reducer
 
 ## Requirements
