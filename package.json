@@ -20,9 +20,7 @@
   },
   "types": "./build/index.d.ts",
   "files": [
-    "./build/index.mjs",
-    "./build/index.umd.js",
-    "./build/index.d.ts"
+    "build"
   ],
   "keywords": [
     "react",
