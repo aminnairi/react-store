@@ -126,42 +126,78 @@ import React, { useContext } from "react"
 import { createRoot } from "react-dom/client"
 import { createStore } from "@aminnairi/react-store"
 
+// State
+
 interface State {
     counter: number
 }
+
+// Action
 
 interface Action {
     type: "INCREMENT"
     payload: null
 }
 
-const { StoreProvider, StoreContext } = createStore<State, Action>({
-    initialState: {
-        counter: 0
-    },
-    reducer: (state, action) => {
-        switch (action.type) {
-            case "INCREMENT":
-                return {
-                    ...state,
-                    counter: state.counter + 1
-                }
+// Initial state
 
-            default:
-                return state
-        }
+const initialState: State = {
+    counter: 0
+}
+
+// Reducer
+
+const reducer = (state: State, action: Action): State => {
+    switch (action.type) {
+        case "INCREMENT":
+            return {
+                ...state,
+                counter: state.counter + 1
+            }
+
+        default:
+            return state
     }
+}
+
+// Store creation
+
+const { StoreProvider, StoreContext } = createStore<State, Action>({
+    initialState,
+    reducer
 })
 
-const Main = () => {
+// Counter custom hook
+
+const useCounter = () => {
     const { state, dispatch } = useContext(StoreContext)
 
+    const increment = () => {
+        dispatch({
+            type: "INCREMENT",
+            payload: null
+        })
+    }
+
+    return {
+        counter: state.counter,
+        increment
+    }
+}
+
+// Main component
+
+const Main = () => {
+    const { counter, increment } = useCounter()
+
     return (
-        <button onClick={() => dispatch({type: "INCREMENT", payload: null})}>
-            {state.counter}
+        <button onClick={increment}>
+            {counter}
         </button>
     )
 }
+
+// React initialization
 
 const rootElement = document.createElement("root")
 
