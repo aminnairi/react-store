@@ -18,6 +18,7 @@
     "type": "git",
     "url": "https://github.com/aminnairi/react-store.git"
   },
+  "types": "./build/index.d.ts",
   "files": [
     "./build/index.mjs",
     "./build/index.umd.js",
@@ -35,6 +36,7 @@
     "build": "vite --config vite.config.build.ts build"
   },
   "devDependencies": {
+    "@aminnairi/react-store": "file:.",
     "@rollup/plugin-terser": "0.1.0",
     "@types/node": "18.11.10",
     "@types/react": "18.0.26",
