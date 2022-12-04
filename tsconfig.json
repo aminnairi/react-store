@@ -2,7 +2,7 @@
     "exclude": ["**/node_modules", "**/example"],
     "compilerOptions": {
         "strict": true,
-        "jsx": "preserve",
+        "jsx": "react",
         "esModuleInterop": true,
         "allowSyntheticDefaultImports": true,
         "skipLibCheck": true

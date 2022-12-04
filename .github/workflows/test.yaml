@@ -1,0 +1,22 @@
+name: Unit Test
+
+on:
+  pull_request:
+    branches:
+      - development
+
+  push:
+    branches:
+      - development
+
+jobs:
+  unit_test:
+    name: Test that the store is working as intended
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Install
+        run: npm install
+      - name: test
+        run: npm test
