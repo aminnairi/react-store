@@ -24,3 +24,11 @@ See [`CONTRIBUTING.md`](./CONTRIBUTING.md).
 ## Licence
 
 See [`LICENCE`](./LICENCE).
+
+## Security
+
+See [`SECURITY.md`](./SECURITY.md).
+
+## Code of conduct
+
+See [`CODE_OF_CONDUCT.md`](./CODE_OF_CONDUCT.md).
