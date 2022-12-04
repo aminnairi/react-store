@@ -1,9 +1,11 @@
-export interface UserRoleUpdateAction {
-    type: "USER_ROLE_UPDATE"
-    payload: string
+export enum UserActionType {
+    UpdateEmail = "USER_EMAIL_UPDATE"
 }
 
 export interface UserEmailUpdateAction {
-    type: "USER_EMAIL_UPDATE",
+    type: UserActionType.UpdateEmail
     payload: string
 }
+
+export type UserAction =
+    | UserEmailUpdateAction

@@ -1,4 +1,7 @@
-export const initialUserState = {
-    role: "ANONYMOUS",
-    email: "johndoe@domain.com"
+export interface UserState {
+    email: string
+}
+
+export const initialUserState: UserState = {
+    email: ""
 }

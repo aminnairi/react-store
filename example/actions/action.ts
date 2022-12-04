@@ -1,8 +1,6 @@
-import { AlertCloseAction, AlertOpenAction } from "./alert";
-import { UserEmailUpdateAction, UserRoleUpdateAction } from "./user";
+import { TodosAction } from "./todos"
+import { UserAction } from "./user"
 
-export type Action = 
-    | UserRoleUpdateAction
-    | UserEmailUpdateAction
-    | AlertOpenAction
-    | AlertCloseAction
+export type Action =
+    | TodosAction
+    | UserAction

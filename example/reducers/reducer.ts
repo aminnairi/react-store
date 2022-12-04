@@ -1,11 +1,8 @@
-import { alertReducer } from "./alert"
-import { Reducer } from "react"
-import { userReducer } from "./user"
-import { Action } from "../actions/action"
-import { State } from "../states/state"
-import { combineReducers } from "@aminnairi/react-store"
+import { combineReducers } from "@aminnairi/react-store";
+import { todosReducer } from "./todos";
+import { userReducer } from "./user";
 
-export const reducer: Reducer<State, Action> = combineReducers([
+export const reducer = combineReducers([
     userReducer,
-    alertReducer
+    todosReducer
 ])

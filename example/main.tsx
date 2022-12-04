@@ -1,9 +1,10 @@
 import React, { Fragment } from "react"
-import { Route, Routes } from "react-router"
+import { Route, Routes } from "react-router-dom"
 import { Header } from "./components/header"
 import { HomePage } from "./pages/home"
 import { NotFoundPage } from "./pages/not-found"
-import { UserPage } from "./pages/user"
+import { ProfilePage } from "./pages/profile"
+import { TodosPage } from "./pages/todos"
 
 export const Main = () => {
     return (
@@ -11,7 +12,8 @@ export const Main = () => {
             <Header />
             <Routes>
                 <Route path="/" element={<HomePage />} />
-                <Route path="/users" element={<UserPage />} />
+                <Route path="/profile" element={<ProfilePage />} />
+                <Route path="/todos" element={<TodosPage />} />
                 <Route path="*" element={<NotFoundPage />} />
             </Routes>
         </Fragment>
