@@ -140,7 +140,7 @@ const { StoreProvider, StoreContext } = createStore<State, Action>({
         counter: 0
     },
     reducer: (state, action) => {
-        switch () {
+        switch (action.type) {
             case "INCREMENT":
                 return {
                     ...state,
