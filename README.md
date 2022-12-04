@@ -113,7 +113,7 @@ const counterReducer = (state: State, action: Action): State => {
 
 // Combined reducers
 
-const reducer = combineReducers([
+const reducer = combineReducers<State, Action>([
     userReducer,
     counterReducer
 ])
@@ -135,7 +135,7 @@ interface Action {
     payload: null
 }
 
-const { StoreProvider, StoreContext } = createStore({
+const { StoreProvider, StoreContext } = createStore<State, Action>({
     initialState: {
         counter: 0
     },
