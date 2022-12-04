@@ -1,0 +1,10 @@
+{
+    "exclude": ["**/node_modules", "**/example"],
+    "compilerOptions": {
+        "strict": true,
+        "jsx": "preserve",
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "skipLibCheck": true
+    }
+}

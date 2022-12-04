@@ -1,0 +1,6 @@
+/.npm
+/build
+/node_modules
+/.env
+/.node_repl_history
+/package-lock.json
