@@ -18,107 +18,6 @@ npm install @aminnairi/react-store
 
 ## API
 
-### combineReducers
-
-```typescript
-import { combineReducers } from "@aminnairi/react-store"
-
-// State
-
-interface State {
-    user: {
-        email: string
-    },
-    counter: {
-        value: number
-    }
-}
-
-// User actions
-
-interface UserUpdateEmailAction {
-    type: "USER_EMAIL_UPDATE"
-    payload: string
-}
-
-type UserAction =
-    | UserEmailUpdateAction
-
-// Counter actions
-
-interface CounterValueIncrementAction {
-    type: "COUNTER_VALUE_INCREMENT"
-    payload: null
-}
-
-interface CounterValueDecrementAction {
-    type: "COUNTER_VALUE_INCREMENT"
-    payload: null
-}
-
-type CounterAction =
-    | CounterValueIncrementAction
-    | CounterValueDecrementAction
-
-// Combined actions
-
-type Action =
-    | UserAction
-    | CounterAction
-
-// User reducer
-
-const userReducer = (state: State, action: Action): State => {
-    switch (action.type) {
-        case "USER_EMAIL_UPDATE"
-            return {
-                ...state,
-                user: {
-                    ...state.user,
-                    email: action.payload
-                }
-            }
-
-        default:
-            return state
-    }
-}
-
-// Counter reducer
-
-const counterReducer = (state: State, action: Action): State => {
-    switch (action.type) {
-        case "COUNTER_VALUE_INCREMENT"
-            return {
-                ...state,
-                counter: {
-                    ...state.counter,
-                    value: state.counter.value + 1
-                }
-            }
-
-        case "COUNTER_VALUE_DECREMENT"
-            return {
-                ...state,
-                counter: {
-                    ...state.counter,
-                    value: state.counter.value - 1
-                }
-            }
-
-        default:
-            return state
-    }
-}
-
-// Combined reducers
-
-const reducer = combineReducers<State, Action>([
-    userReducer,
-    counterReducer
-])
-```
-
 ### createStore
 
 ```tsx
@@ -211,6 +110,206 @@ createRoot(rootElement).render(
     </StoreProvider>
 )
 ```
+
+[Edit on StackBlitz](https://stackblitz.com/edit/aminnairi-react-store?file=index.tsx)
+
+### combineReducers
+
+```tsx
+import * as React from 'react';
+import { Fragment, ChangeEventHandler, useContext } from 'react';
+import { createRoot } from 'react-dom/client';
+import { createStore, combineReducers } from '@aminnairi/react-store';
+
+// State
+
+interface State {
+  user: {
+    email: string;
+  };
+  counter: {
+    value: number;
+  };
+}
+
+const initialState: State = {
+  user: {
+    email: 'johndoe@domain.com',
+  },
+  counter: {
+    value: 0,
+  },
+};
+
+// User actions
+
+interface UserEmailUpdateAction {
+  type: 'USER_EMAIL_UPDATE';
+  payload: string;
+}
+
+type UserAction = UserEmailUpdateAction;
+
+// Counter actions
+
+interface CounterValueIncrementAction {
+  type: 'COUNTER_VALUE_INCREMENT';
+  payload: null;
+}
+
+interface CounterValueDecrementAction {
+  type: 'COUNTER_VALUE_DECREMENT';
+  payload: null;
+}
+
+type CounterAction = CounterValueIncrementAction | CounterValueDecrementAction;
+
+// Combined actions
+
+type Action = UserAction | CounterAction;
+
+// User reducer
+
+const userReducer = (state: State, action: Action): State => {
+  switch (action.type) {
+    case 'USER_EMAIL_UPDATE':
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          email: action.payload,
+        },
+      };
+
+    default:
+      return state;
+  }
+};
+
+// Counter reducer
+
+const counterReducer = (state: State, action: Action): State => {
+  switch (action.type) {
+    case 'COUNTER_VALUE_INCREMENT':
+      return {
+        ...state,
+        counter: {
+          ...state.counter,
+          value: state.counter.value + 1,
+        },
+      };
+
+    case 'COUNTER_VALUE_DECREMENT':
+      return {
+        ...state,
+        counter: {
+          ...state.counter,
+          value: state.counter.value - 1,
+        },
+      };
+
+    default:
+      return state;
+  }
+};
+
+// Combined reducers
+
+const reducer = combineReducers<State, Action>([userReducer, counterReducer]);
+
+// Store creation
+
+const { StoreProvider, StoreContext } = createStore({
+  initialState,
+  reducer,
+});
+
+// User custom hook
+
+const useUser = () => {
+  const { state, dispatch } = useContext(StoreContext);
+
+  const updateEmail = (email: string) => {
+    dispatch({
+      type: 'USER_EMAIL_UPDATE',
+      payload: email,
+    });
+  };
+
+  return {
+    email: state.user.email,
+    updateEmail,
+  };
+};
+
+// Counter custom hook
+
+const useCounter = () => {
+  const { state, dispatch } = useContext(StoreContext);
+
+  const increment = () => {
+    dispatch({
+      type: 'COUNTER_VALUE_INCREMENT',
+      payload: null,
+    });
+  };
+
+  const decrement = () => {
+    dispatch({
+      type: 'COUNTER_VALUE_DECREMENT',
+      payload: null,
+    });
+  };
+
+  return {
+    counter: state.counter.value,
+    increment,
+    decrement,
+  };
+};
+
+// Utilities
+
+const withValue = (callback: (value: string) => void) => {
+  const handler: ChangeEventHandler<HTMLInputElement> = (event) => {
+    callback(event.target.value);
+  };
+
+  return handler;
+};
+
+// Main component
+
+const Main = () => {
+  const { email, updateEmail } = useUser();
+  const { counter, increment, decrement } = useCounter();
+
+  return (
+    <Fragment>
+      <h1>{email}</h1>
+      <input value={email} onChange={withValue(updateEmail)} />
+      <button onClick={decrement}>Decrement</button>
+      <span>Counter: {counter}</span>
+      <button onClick={increment}>Increment</button>
+    </Fragment>
+  );
+};
+
+// React initialization
+
+const rootElement = document.getElementById('root');
+
+if (!rootElement) {
+  throw new Error('Root not found');
+}
+
+createRoot(rootElement).render(
+  <StoreProvider>
+    <Main />
+  </StoreProvider>
+);
+```
+
 
 ## Example
 
