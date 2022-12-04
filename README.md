@@ -16,3 +16,11 @@ npm install @aminnairi/react-store
 ## Example
 
 See [`example`](./example).
+
+## Contributing
+
+See [`CONTRIBUTING.md`](./CONTRIBUTING.md).
+
+## Licence
+
+See [`LICENCE`](./LICENCE).
