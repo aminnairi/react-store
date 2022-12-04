@@ -111,7 +111,7 @@ createRoot(rootElement).render(
 )
 ```
 
-[Edit on StackBlitz](https://stackblitz.com/edit/aminnairi-react-store?file=index.tsx)
+[Try it on StackBlitz](https://stackblitz.com/edit/aminnairi-react-store?file=index.tsx)
 
 ### combineReducers
 
@@ -310,6 +310,7 @@ createRoot(rootElement).render(
 );
 ```
 
+[Try it on StackBlitz](https://stackblitz.com/edit/react-ts-zsyy7b?file=App.tsx)
 
 ## Example
 
