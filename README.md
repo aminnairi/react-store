@@ -331,3 +331,7 @@ See [`SECURITY.md`](./SECURITY.md).
 ## Code of conduct
 
 See [`CODE_OF_CONDUCT.md`](./CODE_OF_CONDUCT.md).
+
+## Credits
+
+React icon made by [Icons8](https://icons8.com/license).
