@@ -31,7 +31,7 @@
     "state"
   ],
   "scripts": {
-    "serve": "vite",
+    "start": "vite",
     "build": "vite --config vite.config.build.ts build",
     "test": "jest"
   },

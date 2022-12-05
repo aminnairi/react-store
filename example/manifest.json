@@ -1,0 +1,28 @@
+{
+    "background_color": "#ffffff",
+    "description": "App",
+    "dir": "ltr",
+    "display": "standalone",
+    "lang": "en-US",
+    "name": "App",
+    "orientation": "portrait-primary",
+    "prefer_related_applications": false,
+    "scope": "/",
+    "short_name": "App",
+    "start_url": "/",
+    "theme_color": "#ffffff",
+    "icons": [
+        {
+            "src": "./icons/icon.png",
+            "type": "image/png",
+            "sizes": "512x512",
+            "purpose": "maskable"
+        },
+        {
+            "src": "./icons/apple-touch-icon.png",
+            "type": "image/png",
+            "sizes": "152x152",
+            "purpose": "maskable"
+        }
+    ]
+}
