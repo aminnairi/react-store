@@ -219,6 +219,10 @@ const useTodos = () => {
 
 See [`example`](./example).
 
+## Changelog
+
+See [`CHANGELOG.md`](./CHANGELOG.md).
+
 ## Contributing
 
 See [`CONTRIBUTING.md`](./CONTRIBUTING.md).
