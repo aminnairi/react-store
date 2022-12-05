@@ -41,11 +41,14 @@ export const createStore = <State, Action>({ initialState, reducer }: CreateStor
         )
     }
 
-    const useStore = () => useContext(StoreContext)
+    const useDispatch = () => useContext(StoreContext).dispatch
+
+    const useSelector = <NewState,>(selector: (state: State) => NewState) => selector(useContext(StoreContext).state)
 
     return {
         StoreProvider,
         StoreContext,
-        useStore
+        useDispatch,
+        useSelector
     }
 }
