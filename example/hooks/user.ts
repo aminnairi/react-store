@@ -13,17 +13,46 @@ export const useUser = () => {
         })
     }
 
+    const load = () => {
+        store.dispatch({
+            type: UserActionType.UpdateLoading,
+            payload: true
+        })
+    }
+
+    const unload = () => {
+        store.dispatch({
+            type: UserActionType.UpdateLoading,
+            payload: false
+        })
+    }
+
+    const unpristine = () => {
+        store.dispatch({
+            type: UserActionType.UpdatePristine,
+            payload: false
+        })
+    }
+
     useMounted(() => {
-        fetch("https://jsonplaceholder.typicode.com/users/1")
-            .then(response => response.json())
-            .then(userSchema.safeParse)
-            .then(user => user.success ? user.data.email : "")
-            .then(updateEmail)
-            .catch(console.error)
+        if (store.state.user.pristine) {
+            load()
+            unpristine()
+
+            fetch("https://jsonplaceholder.typicode.com/users/1")
+                .then(response => response.json())
+                .then(userSchema.safeParse)
+                .then(user => user.success ? user.data.email : "")
+                .then(updateEmail)
+                .catch(console.error)
+                .finally(unload)
+        }
     })
 
     return {
         email: store.state.user.email,
+        loading: store.state.user.loading,
+        error: store.state.user.error,
         updateEmail
     }
 }

@@ -3,7 +3,16 @@ import { useTodos } from "../hooks/todos"
 import { preventDefault, withChecked, withValue } from "../utilities/form"
 
 export const TodosPage = () => {
-    const { todo, items, updateTodoDone, updateTodoName, addTodoItem } = useTodos()
+    const {
+        todo,
+        items,
+        updateTodoDone,
+        updateTodoName,
+        addTodoItem,
+        removeTodoByIndex,
+        updateTodoItemDoneByIndex,
+        updateTodoItemNameByIndex
+    } = useTodos()
 
     return (
         <Fragment>
@@ -34,7 +43,17 @@ export const TodosPage = () => {
             <ul>
                 {items.map((item, index) => (
                     <li key={index}>
-                        <label>{item.done ? "DONE" : "TODO"}: {item.name}</label>
+                        <input
+                            type="checkbox"
+                            checked={item.done}
+                            onChange={withChecked(updateTodoItemDoneByIndex(index))} />
+                        <input
+                            type="text"
+                            value={item.name}
+                            onChange={withValue(updateTodoItemNameByIndex(index))} />
+                        <button onClick={removeTodoByIndex(index)}>
+                            Remove
+                        </button>
                     </li>
                 ))}
             </ul>

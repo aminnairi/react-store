@@ -26,11 +26,41 @@ export const useTodos = () => {
         })
     }
 
+    const removeTodoByIndex = (index: number) => () => {
+        store.dispatch({
+            type: TodosActionType.RemoveTodoByIndex,
+            payload: index
+        })
+    }
+
+    const updateTodoItemDoneByIndex = (index: number) => (done: boolean) => {
+        store.dispatch({
+            type: TodosActionType.UpdateTodoItemDone,
+            payload: {
+                index,
+                done
+            }
+        })
+    }
+    
+    const updateTodoItemNameByIndex = (index: number) => (name: string) => {
+        store.dispatch({
+            type: TodosActionType.UpdateTodoItemName,
+            payload: {
+                index,
+                name
+            }
+        })
+    }
+
     return {
         items: store.state.todos.items,
         todo: store.state.todos.todo,
         addTodoItem,
         updateTodoName,
-        updateTodoDone
+        updateTodoDone,
+        removeTodoByIndex,
+        updateTodoItemDoneByIndex,
+        updateTodoItemNameByIndex
     }
 }

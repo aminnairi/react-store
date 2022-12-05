@@ -1,7 +1,7 @@
-import React from "react"
+import React, { memo } from "react"
 import { Link } from "react-router-dom"
 
-export const Header = () => {
+export const Header = memo(() => {
     return (
         <ul>
             <li>
@@ -18,4 +18,4 @@ export const Header = () => {
             </li>
         </ul>
     )
-}
+})

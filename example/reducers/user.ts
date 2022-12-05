@@ -13,6 +13,33 @@ export const userReducer = (state: State, action: Action): State => {
                 }
             }
 
+        case UserActionType.UpdateError:
+            return {
+                ...state,
+                user: {
+                    ...state.user,
+                    error: action.payload
+                }
+            }
+
+        case UserActionType.UpdateLoading:
+            return {
+                ...state,
+                user: {
+                    ...state.user,
+                    loading: action.payload
+                }
+            }
+
+        case UserActionType.UpdatePristine:
+            return {
+                ...state,
+                user: {
+                    ...state.user,
+                    pristine: action.payload
+                }
+            }
+
         default:
             return state
     }

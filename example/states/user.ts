@@ -1,7 +1,13 @@
 export interface UserState {
-    email: string
+    pristine: boolean,
+    email: string,
+    loading: boolean,
+    error: unknown
 }
 
 export const initialUserState: UserState = {
-    email: ""
+    pristine: true,
+    email: "",
+    loading: false,
+    error: null
 }

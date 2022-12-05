@@ -9,6 +9,10 @@ export const todosReducer = (state: State, action: Action): State => {
                 ...state,
                 todos: {
                     ...state.todos,
+                    todo: {
+                        name: "",
+                        done: false
+                    },
                     items: [
                         ...state.todos.items,
                         state.todos.todo
@@ -37,6 +41,53 @@ export const todosReducer = (state: State, action: Action): State => {
                         ...state.todos.todo,
                         done: action.payload
                     }
+                }
+            }
+
+        case TodosActionType.RemoveTodoByIndex:
+            return {
+                ...state,
+                todos: {
+                    ...state.todos,
+                    items: state.todos.items.filter((item, index) => {
+                        return index !== action.payload
+                    })
+                }
+            }
+
+        case TodosActionType.UpdateTodoItemDone:
+            return {
+                ...state,
+                todos: {
+                    ...state.todos,
+                    items: state.todos.items.map((item, index) => {
+                        if (index === action.payload.index) {
+                            return {
+                                ...item,
+                                done: action.payload.done
+                            }
+                        }
+
+                        return item
+                    })
+                }
+            }
+
+        case TodosActionType.UpdateTodoItemName:
+            return {
+                ...state,
+                todos: {
+                    ...state.todos,
+                    items: state.todos.items.map((item, index) => {
+                        if (index === action.payload.index) {
+                            return {
+                                ...item,
+                                name: action.payload.name
+                            }
+                        }
+
+                        return item
+                    })
                 }
             }
 
