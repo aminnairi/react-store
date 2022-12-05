@@ -21,11 +21,15 @@ npm install @aminnairi/react-store
 ### API - createReducer
 
 ```tsx
+export interface UserState {
+    token: string
+}
+
+export type TodosState = Array<string>
+
 export interface State {
-    user: {
-        token: string
-    },
-    todos: Array<string>
+    user: UserState
+    todos: TodosState
 }
 
 export const initialState: State = {
@@ -186,10 +190,11 @@ const useTodos = () => {
 #### API - createStore - useSelector
 
 ```tsx
+import { UserState } from "../states/state"
 import { useSelector } from "../store"
 
 const useUser = () => {
-    const user = useSelector(state => state.user)
+    const user = useSelector<UserState>(state => state.user)
 
     return {
         user
@@ -198,10 +203,11 @@ const useUser = () => {
 ```
 
 ```tsx
+import { TodosState } from "../states/state"
 import { useSelector } from "../store"
 
 const useTodos = () => {
-    const todos = useSelector(state => state.todos)
+    const todos = useSelector<TodosState>(state => state.todos)
 
     return {
         todos
