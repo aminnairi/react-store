@@ -1,39 +1,40 @@
 import { TodosActionType } from "../actions/todos"
-import { useStore } from "./store"
+import { useSelector, useDispatch } from "../store"
 
 export const useTodos = () => {
-    const store = useStore()
+    const todos = useSelector(state => state.todos)
+    const dispatch = useDispatch()
 
     const addTodoItem = () => {
-        store.dispatch({
+        dispatch({
             type: TodosActionType.AddTodoItem,
             payload: null
         })
     }
 
     const updateTodoName = (name: string) => {
-        store.dispatch({
+        dispatch({
             type: TodosActionType.UpdateTodoName,
             payload: name
         })
     }
 
     const updateTodoDone = (done: boolean) => {
-        store.dispatch({
+        dispatch({
             type: TodosActionType.UpdateTodoDone,
             payload: done
         })
     }
 
     const removeTodoItem = (index: number) => () => {
-        store.dispatch({
+        dispatch({
             type: TodosActionType.RemoveTodoItem,
             payload: index
         })
     }
 
     const updateTodoItemDoneByIndex = (index: number) => (done: boolean) => {
-        store.dispatch({
+        dispatch({
             type: TodosActionType.UpdateTodoItemDone,
             payload: {
                 index,
@@ -43,7 +44,7 @@ export const useTodos = () => {
     }
     
     const updateTodoItemNameByIndex = (index: number) => (name: string) => {
-        store.dispatch({
+        dispatch({
             type: TodosActionType.UpdateTodoItemName,
             payload: {
                 index,
@@ -53,8 +54,8 @@ export const useTodos = () => {
     }
 
     return {
-        items: store.state.todos.items,
-        todo: store.state.todos.todo,
+        items: todos.items,
+        todo: todos.todo,
         addTodoItem,
         updateTodoName,
         updateTodoDone,

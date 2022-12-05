@@ -1,41 +1,42 @@
 import { UserActionType } from "../actions/user"
 import { userSchema } from "../schemas/user"
 import { useMounted } from "./lifecycle"
-import { useStore } from "./store"
+import { useDispatch, useSelector } from "../store"
 
 export const useUser = () => {
-    const store = useStore()
+    const user = useSelector(state => state.user)
+    const dispatch = useDispatch()
 
     const updateEmail = (email: string) => {
-        store.dispatch({
+        dispatch({
             type: UserActionType.UpdateEmail,
             payload: email
         })
     }
 
     const load = () => {
-        store.dispatch({
+        dispatch({
             type: UserActionType.UpdateLoading,
             payload: true
         })
     }
 
     const unload = () => {
-        store.dispatch({
+        dispatch({
             type: UserActionType.UpdateLoading,
             payload: false
         })
     }
 
     const unpristine = () => {
-        store.dispatch({
+        dispatch({
             type: UserActionType.UpdatePristine,
             payload: false
         })
     }
 
     useMounted(() => {
-        if (store.state.user.pristine) {
+        if (user.pristine) {
             load()
             unpristine()
 
@@ -50,9 +51,9 @@ export const useUser = () => {
     })
 
     return {
-        email: store.state.user.email,
-        loading: store.state.user.loading,
-        error: store.state.user.error,
+        email: user.email,
+        loading: user.loading,
+        error: user.error,
         updateEmail
     }
 }
