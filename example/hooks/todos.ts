@@ -1,5 +1,4 @@
 import { TodosActionType } from "../actions/todos"
-import { Todo } from "../states/todos"
 import { useStore } from "./store"
 
 export const useTodos = () => {
@@ -26,9 +25,9 @@ export const useTodos = () => {
         })
     }
 
-    const removeTodoByIndex = (index: number) => () => {
+    const removeTodoItem = (index: number) => () => {
         store.dispatch({
-            type: TodosActionType.RemoveTodoByIndex,
+            type: TodosActionType.RemoveTodoItem,
             payload: index
         })
     }
@@ -59,7 +58,7 @@ export const useTodos = () => {
         addTodoItem,
         updateTodoName,
         updateTodoDone,
-        removeTodoByIndex,
+        removeTodoItem,
         updateTodoItemDoneByIndex,
         updateTodoItemNameByIndex
     }

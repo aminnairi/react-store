@@ -1,11 +1,11 @@
 import React, { Fragment } from "react"
 import { Error } from "../components/error"
 import { Loader } from "../components/loader"
+import { ProfileEmail } from "../components/profile-email"
 import { useUser } from "../hooks/user"
-import { withValue } from "../utilities/form"
 
 export const ProfilePage = () => {
-    const { email, loading, error, updateEmail } = useUser()
+    const { loading, error } = useUser()
 
     if (error) {
         return <Error />
@@ -18,10 +18,7 @@ export const ProfilePage = () => {
     return (
         <Fragment>
             <h1>Profile</h1>
-            <input
-                type="email"
-                value={email}
-                onChange={withValue(updateEmail)} />
+            <ProfileEmail />
         </Fragment>
     )
 }

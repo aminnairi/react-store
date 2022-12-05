@@ -2,7 +2,7 @@ export enum TodosActionType {
     AddTodoItem = "TODOS_ADD",
     UpdateTodoName = "TODO_NAME_UPDATE",
     UpdateTodoDone = "TODO_DONE_UPDATE",
-    RemoveTodoByIndex = "TODO_REMOVE_BY_INDEX",
+    RemoveTodoItem = "TODO_REMOVE_ITEM",
     UpdateTodoItemDone = "TODO_ITEM_DONE_UPDATE",
     UpdateTodoItemName = "TODO_ITEM_NAME_UPDATE"
 }
@@ -22,8 +22,8 @@ export interface UpdateTodoDoneAction {
     payload: boolean
 }
 
-export interface RemoveTodoByIndexAction {
-    type: TodosActionType.RemoveTodoByIndex,
+export interface RemoveTodoItemAction {
+    type: TodosActionType.RemoveTodoItem,
     payload: number
 }
 
@@ -47,6 +47,6 @@ export type TodosAction =
     | AddTodoAction
     | UpdateTodoNameAction
     | UpdateTodoDoneAction
-    | RemoveTodoByIndexAction
+    | RemoveTodoItemAction
     | UpdateTodoItemDoneAction 
     | UpdateTodoItemNameAction

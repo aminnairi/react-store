@@ -44,7 +44,7 @@ export const todosReducer = (state: State, action: Action): State => {
                 }
             }
 
-        case TodosActionType.RemoveTodoByIndex:
+        case TodosActionType.RemoveTodoItem:
             return {
                 ...state,
                 todos: {
