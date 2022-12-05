@@ -1,7 +1,7 @@
 import React, { Fragment, useContext, useEffect } from "react"
 import { createRoot } from "react-dom/client"
 import { act } from "react-dom/test-utils"
-import { combineReducers, createStore } from "../sources"
+import { combineReducers, createReducer, createStore } from "../sources"
 
 // @ts-ignore
 global.IS_REACT_ACT_ENVIRONMENT = true
@@ -30,6 +30,45 @@ afterEach(() => {
 })
 
 describe("@aminnairi/react-store", () => {
+    describe("createReducer", () => {
+            const firstReducer = createReducer<State, Action>((state, action) => {
+                switch (action.type) {
+                    case "FIRST":
+                        return {
+                            ...state,
+                            first: action.payload
+                        }
+
+                    default:
+                        return state
+                }
+            })
+
+            const secondReducer = createReducer<State, Action>((state, action) => {
+                switch (action.type) {
+                    case "SECOND":
+                        return {
+                            ...state,
+                            second: action.payload
+                        }
+
+                    default:
+                        return state
+                }
+            })
+
+            const reducer = combineReducers([
+                firstReducer,
+                secondReducer
+            ])
+
+            const firstState = reducer({ first: "first", second: "second" }, { type: "FIRST", payload: "FIRST" })
+            const secondState = reducer(firstState, { type: "SECOND", payload: "SECOND" })
+
+            expect(firstState).toEqual({ first: "FIRST", second: "second" })
+            expect(secondState).toEqual({ first: "FIRST", second: "SECOND" })
+    })
+
     describe("combineReducers", () => {
         it("should combine reducers", () => {
             const firstReducer = (state: State, action: Action): State => {
@@ -73,7 +112,7 @@ describe("@aminnairi/react-store", () => {
 
     describe("StoreProvider", () => {
         it("should return a working provider & context", () => {
-            const { StoreProvider, StoreContext } = createStore<State, Action>({
+            const { StoreProvider, useSelector, useDispatch } = createStore<State, Action>({
                 initialState: {
                     first: "first",
                     second: "second"
@@ -99,7 +138,9 @@ describe("@aminnairi/react-store", () => {
             })
 
             const Main = () => {
-                const { state, dispatch } = useContext(StoreContext)
+                const dispatch = useDispatch()
+
+                const state = useSelector(state => state)
 
                 useEffect(() => {
                     dispatch({
