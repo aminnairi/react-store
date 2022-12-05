@@ -1,6 +1,6 @@
 import React, { Fragment, memo } from "react"
 
-export const Loader = memo(() => {
+export const ProfileLoader = memo(() => {
     return (
         <Fragment>
             <h1>Loading</h1>
