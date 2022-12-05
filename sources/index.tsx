@@ -1,4 +1,4 @@
-import React, { ReactNode, Reducer, useReducer, createContext, Dispatch } from "react"
+import React, { ReactNode, Reducer, useReducer, createContext, Dispatch, useContext } from "react"
 
 export interface CreateStoreOptions<State, Action> {
     initialState: State,
@@ -22,6 +22,8 @@ export const combineReducers = <State, Action>(reducers: Array<Reducer<State, Ac
     return reducer
 }
 
+export const createReducer = <State, Action>(reducer: (state: State, action: Action) => State) => reducer
+
 export const createStore = <State, Action>({ initialState, reducer }: CreateStoreOptions<State, Action>) => {
     const StoreContext = createContext<StoreContextInterface<State, Action>>({
         state: initialState,
@@ -39,8 +41,11 @@ export const createStore = <State, Action>({ initialState, reducer }: CreateStor
         )
     }
 
+    const useStore = () => useContext(StoreContext)
+
     return {
         StoreProvider,
-        StoreContext
+        StoreContext,
+        useStore
     }
 }
