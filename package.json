@@ -35,6 +35,9 @@
     "build": "vite --config vite.config.build.ts build",
     "test": "jest"
   },
+  "peerDependencies": {
+    "react": "^18.0.0"
+  },
   "devDependencies": {
     "@aminnairi/react-store": "file:.",
     "@rollup/plugin-terser": "0.1.0",
@@ -45,7 +48,6 @@
     "@types/react-router-dom": "5.3.3",
     "jest": "29.3.1",
     "jest-environment-jsdom": "29.3.1",
-    "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-router-dom": "6.4.4",
     "ts-jest": "29.0.3",
