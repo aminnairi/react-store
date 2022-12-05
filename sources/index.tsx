@@ -47,7 +47,6 @@ export const createStore = <State, Action>({ initialState, reducer }: CreateStor
 
     return {
         StoreProvider,
-        StoreContext,
         useDispatch,
         useSelector
     }
