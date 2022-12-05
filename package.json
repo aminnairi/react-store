@@ -1,7 +1,7 @@
 {
   "name": "@aminnairi/react-store",
   "description": "Simple yet powerful store manager written in TypeScript on top of React's context & reducer",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "homepage": "https://github.com/aminnairi/react-store#readme",
   "license": "GPL-3.0-or-later",
   "main": "./build/index.umd.js",
