@@ -116,7 +116,7 @@ import { State, initialState } from "./states/state"
 import { Action } from "./actions/action"
 import { reducer } from "./reducers/reducer"
 
-export const { StoreProvider, StoreContext, useStore } = createStore<State, Action>({
+export const { StoreProvider, StoreContext, useStore,  } = createStore<State, Action>({
     initialState
     reducer
 })
@@ -143,15 +143,13 @@ createRoot(rootElement).render(
 )
 ```
 
-#### API - createStore - StoreContext
+#### API - createStore - useDispatch
 
 ```tsx
-import { useContext } from "react"
-
-import { StoreContext } from "../store"
+import { useDispatch } from "../store"
 
 const useUser = () => {
-    const { state, dispatch } = useContext(StoreContext)
+    const dispatch = useDispatch()
 
     const updateToken = (payload: string) => {
         dispatch({
@@ -161,19 +159,16 @@ const useUser = () => {
     }
 
     return {
-        token: state.user.token,
         updateToken
     }
 }
 ```
 
 ```tsx
-import { useContext } from "react"
-
-import { StoreContext } from "../store"
+import { useDispatch } from "../store"
 
 const useTodos = () => {
-    const { state, dispatch } = useContext(StoreContext)
+    const dispatch = useDispatch()
 
     const addTodo = (payload: string) => {
         dispatch({
@@ -183,50 +178,33 @@ const useTodos = () => {
     }
 
     return {
-        todos: state.todos,
         addTodo
     }
 }
 ```
 
-#### API - createStore - useStore
+#### API - createStore - useSelector
 
 ```tsx
-import { useStore } from "../store"
+import { useSelector } from "../store"
 
 const useUser = () => {
-    const { state, dispatch } = useStore()
-
-    const updateToken = (payload: string) => {
-        dispatch({
-            type: "USER_TOKEN_UPDATE",
-            payload
-        })
-    }
+    const user = useSelector(state => state.user)
 
     return {
-        token: state.user.token,
-        updateToken
+        user
     }
 }
 ```
 
 ```tsx
-import { useStore } from "../store"
+import { useSelector } from "../store"
 
 const useTodos = () => {
-    const { state, dispatch } = useStore()
-
-    const addTodo = (payload: string) => {
-        dispatch({
-            type: "TODOS_ITEM_ADD",
-            payload
-        })
-    }
+    const todos = useSelector(state => state.todos)
 
     return {
-        todos: state.todos,
-        addTodo
+        todos
     }
 }
 ```
