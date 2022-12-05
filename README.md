@@ -18,7 +18,7 @@ npm install @aminnairi/react-store
 
 ## API
 
-### createReducer
+### API - createReducer
 
 ```tsx
 export interface State {
@@ -91,7 +91,7 @@ export const todosReducer = createReducer<State, Action>((state, action) => {
 })
 ```
 
-### combineReducers
+### API - combineReducers
 
 ```tsx
 import { combineReducers } from "@aminnairi/react-store"
@@ -107,7 +107,7 @@ export const reducer = combineReducers<State, Action>([
 ])
 ```
 
-### createStore
+### API - createStore
 
 ```tsx
 import { createStore } from "@aminnairi/react-store"
@@ -122,7 +122,7 @@ export const { StoreProvider, StoreContext, useStore } = createStore<State, Acti
 })
 ```
 
-#### StoreProvider
+#### API - createStore - StoreProvider
 
 ```tsx
 import React from "react"
@@ -143,14 +143,14 @@ createRoot(rootElement).render(
 )
 ```
 
-#### StoreContext
+#### API - createStore - StoreContext
 
 ```tsx
 import { useContext } from "react"
 
 import { StoreContext } from "../store"
 
-const userUser = () => {
+const useUser = () => {
     const { state, dispatch } = useContext(StoreContext)
 
     const updateToken = (payload: string) => {
@@ -189,12 +189,12 @@ const useTodos = () => {
 }
 ```
 
-#### useStore
+#### API - createStore - useStore
 
 ```tsx
 import { useStore } from "../store"
 
-const userUser = () => {
+const useUser = () => {
     const { state, dispatch } = useStore()
 
     const updateToken = (payload: string) => {
