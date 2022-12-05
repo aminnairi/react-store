@@ -1,8 +1,8 @@
-import React from "react"
+import React, { memo } from "react"
 import { useTodos } from "../hooks/todos"
 import { TodosListItem } from "./todos-list-item"
 
-export const TodosList = () => {
+export const TodosList = memo(() => {
     const { items } = useTodos()
 
     if (items.length === 0) {
@@ -20,4 +20,4 @@ export const TodosList = () => {
             ))}
         </ul>
     )
-}
+})

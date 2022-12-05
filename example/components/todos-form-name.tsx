@@ -1,9 +1,11 @@
-import React from "react"
+import React, { memo } from "react"
 import { useTodos } from "../hooks/todos"
 import { withValue } from "../utilities/form"
 
-export const TodosFormName = () => {
+export const TodosFormName = memo(() => {
     const { todo, updateTodoName } = useTodos()
+
+    console.log("todos-form-name")
 
     return (
         <div>
@@ -17,4 +19,4 @@ export const TodosFormName = () => {
                 onChange={withValue(updateTodoName)} />
         </div>
     )
-}
+})

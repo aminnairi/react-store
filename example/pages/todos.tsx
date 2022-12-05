@@ -1,8 +1,8 @@
-import React, { Fragment } from "react"
+import React, { Fragment, memo } from "react"
 import { TodosForm } from "../components/todos-form"
 import { TodosList } from "../components/todos-list"
 
-export const TodosPage = () => {
+export const TodosPage = memo(() => {
     return (
         <Fragment>
             <h1>Todos</h1>
@@ -10,4 +10,4 @@ export const TodosPage = () => {
             <TodosList />
         </Fragment>
     )
-}
+})

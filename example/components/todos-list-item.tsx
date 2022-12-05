@@ -1,4 +1,4 @@
-import React, { Fragment } from "react"
+import React, { Fragment, memo } from "react"
 import { useTodos } from "../hooks/todos"
 import { Todo } from "../states/todos"
 import { withChecked, withValue } from "../utilities/form"
@@ -8,7 +8,7 @@ interface TodosListItemProps {
     index: number
 }
 
-export const TodosListItem = ({ item, index }: TodosListItemProps) => {
+export const TodosListItem = memo(({ item, index }: TodosListItemProps) => {
     const { updateTodoItemDoneByIndex, updateTodoItemNameByIndex, removeTodoItem } = useTodos()
 
     return (
@@ -27,4 +27,4 @@ export const TodosListItem = ({ item, index }: TodosListItemProps) => {
 
         </Fragment>
     )
-}
+})

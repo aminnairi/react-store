@@ -1,8 +1,8 @@
-import React from "react"
+import React, { memo } from "react"
 import { useTodos } from "../hooks/todos"
 import { withChecked } from "../utilities/form"
 
-export const TodosFormDone = () => {
+export const TodosFormDone = memo(() => {
     const { todo, updateTodoDone } = useTodos()
 
     return (
@@ -17,4 +17,4 @@ export const TodosFormDone = () => {
                 onChange={withChecked(updateTodoDone)} />
         </div>
     )
-}
+})

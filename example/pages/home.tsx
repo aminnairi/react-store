@@ -1,7 +1,7 @@
-import React from "react"
+import React, { memo } from "react"
 
-export const HomePage = () => {
+export const HomePage = memo(() => {
     return (
         <h1>Home</h1>
     )
-}
+})
