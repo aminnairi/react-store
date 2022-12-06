@@ -20,7 +20,7 @@ npm install @aminnairi/react-store
 
 ### API - createReducer
 
-Create a reducer function that takes the previous states, an action, and returns a new state. Note that when using this function, mutations for the state and the action are not permitted.
+Create a reducer function that takes the previous state, an action, and returns a new state. Note that when using this function, mutations for the state and the action are not permitted.
 
 ```tsx
 export interface UserState {
