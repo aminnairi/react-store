@@ -120,7 +120,7 @@ import { State, initialState } from "./states/state"
 import { Action } from "./actions/action"
 import { reducer } from "./reducers/reducer"
 
-export const { StoreProvider, StoreContext, useStore,  } = createStore<State, Action>({
+export const { StoreProvider, useDispatch, useSelector } = createStore<State, Action>({
     initialState
     reducer
 })
