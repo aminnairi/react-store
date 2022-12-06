@@ -1,8 +1,9 @@
+import { createReducer } from "@aminnairi/react-store";
 import { Action } from "../actions/action";
 import { TodosActionType } from "../actions/todos";
 import { State } from "../states/state";
 
-export const todosReducer = (state: State, action: Action): State => {
+export const todosReducer = createReducer<State, Action>((state, action) => {
     switch (action.type) {
         case TodosActionType.AddTodoItem:
             return {
@@ -94,4 +95,4 @@ export const todosReducer = (state: State, action: Action): State => {
         default:
             return state
     }
-}
+})
