@@ -20,6 +20,8 @@ npm install @aminnairi/react-store
 
 ### API - createReducer
 
+Create a reducer function that takes the previous states, an action, and returns a new state. Note that when using this function, mutations for the state and the action are not permitted.
+
 ```tsx
 export interface UserState {
     token: string
@@ -97,6 +99,8 @@ export const todosReducer = createReducer<State, Action>((state, action) => {
 
 ### API - combineReducers
 
+Turn several small reducers into one bigger reducer. This is great when it comes to breaking down the whole store's reducer into smaller, easier to work with reducers.
+
 ```tsx
 import { combineReducers } from "@aminnairi/react-store"
 
@@ -113,6 +117,8 @@ export const reducer = combineReducers<State, Action>([
 
 ### API - createStore
 
+Create a store that is the union point of an initial state and a reducer for that state.
+
 ```tsx
 import { createStore } from "@aminnairi/react-store"
 
@@ -127,6 +133,8 @@ export const { StoreProvider, useDispatch, useSelector } = createStore<State, Ac
 ```
 
 #### API - createStore - StoreProvider
+
+The provider for a store is a JSX component that will expose a context to all of its child components.
 
 ```tsx
 import React from "react"
@@ -148,6 +156,8 @@ createRoot(rootElement).render(
 ```
 
 #### API - createStore - useDispatch
+
+Return a function that can be used to dispatch actions that are available for this store. This is useful when it comes down to update the state of the store from a component. It is also useful in custom hooks to define action creators that will dispatch the correct types using a clean API to work with.
 
 ```tsx
 import { useDispatch } from "../store"
@@ -188,6 +198,8 @@ const useTodos = () => {
 ```
 
 #### API - createStore - useSelector
+
+Exposes part or all of the state that has been within by the store. This is great to break down the state of a store into a smaller piece, easier to work with and especially useful in custom hooks or components. Note that the state in this case is readonly and cannot be mutated.
 
 ```tsx
 import { UserState } from "../states/state"
