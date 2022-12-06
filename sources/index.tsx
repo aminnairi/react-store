@@ -1,4 +1,17 @@
-import React, { ReactNode, Reducer, useReducer, createContext, Dispatch, useContext } from "react"
+import React, { ReactNode, Reducer, useReducer, createContext, Dispatch, useContext, useMemo } from "react"
+
+export type DeepReadonly<Type> =
+    Type extends Array<infer Item>
+        ? DeepReadonlyArray<Item>
+        : Type extends object
+            ? DeepReadonlyObject<Type>
+            : Readonly<Type>
+
+export type DeepReadonlyArray<Type> = ReadonlyArray<DeepReadonly<Type>>
+
+export type DeepReadonlyObject<Target> = {
+    readonly [Key in keyof Target]: DeepReadonly<Target[Key]>
+}
 
 export interface CreateStoreOptions<State, Action> {
     initialState: State,
@@ -22,7 +35,7 @@ export const combineReducers = <State, Action>(reducers: Array<Reducer<State, Ac
     return reducer
 }
 
-export const createReducer = <State, Action>(reducer: (state: State, action: Action) => State) => reducer
+export const createReducer = <State, Action>(reducer: (state: DeepReadonly<State>, action: DeepReadonly<Action>) => DeepReadonly<State>) => reducer
 
 export const createStore = <State, Action>({ initialState, reducer }: CreateStoreOptions<State, Action>) => {
     const StoreContext = createContext<StoreContextInterface<State, Action>>({
@@ -34,8 +47,10 @@ export const createStore = <State, Action>({ initialState, reducer }: CreateStor
 
         const [state, dispatch] = useReducer(reducer, initialState)
 
+        const value = useMemo(() => ({state, dispatch}), [state, dispatch])
+
         return (
-            <StoreContext.Provider value={{ state, dispatch }}>
+            <StoreContext.Provider value={value}>
                 {children}
             </StoreContext.Provider>
         )
@@ -43,7 +58,7 @@ export const createStore = <State, Action>({ initialState, reducer }: CreateStor
 
     const useDispatch = () => useContext(StoreContext).dispatch
 
-    const useSelector = <NewState,>(selector: (state: State) => NewState) => selector(useContext(StoreContext).state)
+    const useSelector = <NewState,>(selector: (state: DeepReadonly<State>) => NewState) => selector(useContext(StoreContext).state as DeepReadonly<State>)
 
     return {
         StoreProvider,
