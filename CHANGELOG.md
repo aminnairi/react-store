@@ -11,7 +11,7 @@
 
 ### Major changes
 
-- Readonly state & action
+- Readonly state & action ([#2](https://github.com/aminnairi/react-store/pull/2))
 
 ### Minor changes
 
