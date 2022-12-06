@@ -2,8 +2,23 @@
 
 ## Versions
 
-- [`0.1.0`](#010)
+- [`1.0.1`](#101)
 - [`1.0.0`](#100)
+- [`0.1.0`](#010)
+
+## 1.0.1
+
+### Major changes
+
+None.
+
+### Minor changes
+
+None.
+
+### Bug & security fixes
+
+- Fixed documentation
 
 ## 1.0.0
 
@@ -15,7 +30,7 @@
 
 ### Minor changes
 
-None
+None.
 
 ### Bug & security fixes
 
