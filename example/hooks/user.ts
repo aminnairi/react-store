@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "../store"
 
 export const useUser = () => {
     const user = useSelector(state => state.user)
+
     const dispatch = useDispatch()
 
     const updateEmail = (email: string) => {

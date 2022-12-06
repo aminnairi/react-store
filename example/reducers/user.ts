@@ -1,8 +1,9 @@
+import { createReducer } from "@aminnairi/react-store"
 import { Action } from "../actions/action"
 import { UserActionType } from "../actions/user"
 import { State } from "../states/state"
 
-export const userReducer = (state: State, action: Action): State => {
+export const userReducer = createReducer<State, Action>((state, action) => {
     switch (action.type) {
         case UserActionType.UpdateEmail:
             return {
@@ -43,4 +44,4 @@ export const userReducer = (state: State, action: Action): State => {
         default:
             return state
     }
-}
+})
