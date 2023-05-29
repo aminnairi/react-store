@@ -2,10 +2,15 @@
 
 ## Versions
 
+- [`2.1.0`](#210)
 - [`2.0.0`](#200)
 - [`1.0.1`](#101)
 - [`1.0.0`](#100)
 - [`0.1.0`](#010)
+
+## 2.1.0
+
+- Updated the version to be used by every react hooks users ([#4](https://github.com/aminnairi/react-store/pull/4))
 
 ## 2.0.0
 
