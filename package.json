@@ -36,7 +36,7 @@
     "test": "jest"
   },
   "peerDependencies": {
-    "react": "^18.0.0"
+    "react": ">=16.8.0"
   },
   "devDependencies": {
     "@aminnairi/react-store": "file:.",
