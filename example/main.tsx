@@ -1,21 +1,20 @@
-import React, { Fragment } from "react"
-import { Route, Routes } from "react-router-dom"
-import { Header } from "./components/header"
-import { HomePage } from "./pages/home"
-import { NotFoundPage } from "./pages/not-found"
-import { ProfilePage } from "./pages/profile"
-import { TodosPage } from "./pages/todos"
+import React, { Fragment } from "react";
+import { useCounter } from "./hooks/counter";
+import { useName } from "./hooks/name";
 
 export const Main = () => {
-    return (
-        <Fragment>
-            <Header />
-            <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/profile" element={<ProfilePage />} />
-                <Route path="/todos" element={<TodosPage />} />
-                <Route path="*" element={<NotFoundPage />} />
-            </Routes>
-        </Fragment>
-    )
-}
+  const { value, increment, decrement } = useCounter();
+  const { name, updateName, resetName } = useName();
+
+  return (
+    <Fragment>
+      <h1>Hello, {name}!</h1>
+      <label htmlFor="name">Name</label>
+      <input id="name" type="text" placeholder="Name" value={name} onChange={updateName} />
+      <button onClick={resetName}>Reset</button>
+      <button onClick={decrement}>Decrement</button>
+      <span>{value}</span>
+      <button onClick={increment}>Increment</button>
+    </Fragment>
+  );
+};
