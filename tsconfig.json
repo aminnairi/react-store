@@ -1,10 +1,21 @@
 {
-    "exclude": ["**/node_modules", "**/example"],
-    "compilerOptions": {
-        "strict": true,
-        "jsx": "react",
-        "esModuleInterop": true,
-        "allowSyntheticDefaultImports": true,
-        "skipLibCheck": true
-    }
+  "exclude": [
+    "example",
+    "rollup.config.ts",
+    "vite.config.ts",
+    "jest.config.ts",
+    "sources/index.test.tsx",
+    "rollup.config.example.ts",
+    "node_modules"
+  ],
+  "compilerOptions": {
+    "rootDir": "sources",
+    "strict": true,
+    "jsx": "react",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "declarationDir": "build"
+  }
 }
