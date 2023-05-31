@@ -1,9 +1,8 @@
-import { defineConfig } from "vite"
+import { defineConfig } from "vite";
 
 export default defineConfig({
-    root: "example",
-    server: {
-        port: Number(process.env.PORT) || 8000,
-        host: String(process.env.HOST)
-    }
-})
+  server: {
+    port: 8000,
+    host: "0.0.0.0"
+  }
+});
