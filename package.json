@@ -4,9 +4,9 @@
   "version": "2.1.0",
   "homepage": "https://github.com/aminnairi/react-store#readme",
   "license": "GPL-3.0-or-later",
-  "main": "./build/index.js",
-  "module": "./build/index.js",
-  "browser": "./build/index.js",
+  "main": "build/index.js",
+  "module": "build/index.js",
+  "browser": "build/index.js",
   "sideEffects": false,
   "bugs": {
     "url": "https://github.com/aminnairi/react-store/issues"
@@ -19,7 +19,7 @@
     "type": "git",
     "url": "https://github.com/aminnairi/react-store.git"
   },
-  "types": "./build/index.d.ts",
+  "types": "build/index.d.ts",
   "files": [
     "build"
   ],
